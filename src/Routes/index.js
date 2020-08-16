@@ -1,13 +1,14 @@
 import React from 'react'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import LoginPage from '../Pages/LoginPage'
+import LandingPage from '../Pages/LandingPage'
 
 const Routes = () => {
     return(
         <BrowserRouter>
             <Switch>
                 <Route exact path="/">
-                    LandingPage
+                    <LandingPage/>
                 </Route>
 
                 <Route exact path="/login">
