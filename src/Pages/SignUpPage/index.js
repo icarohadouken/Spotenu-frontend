@@ -7,7 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles} from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import HeroBanner from '../../Components/HeroBanner'
 
 const Content = styled.div`
@@ -45,8 +45,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-const LoginPage = () => {
+const SignUpPage = () => {
 
     const classes = useStyles()
 
@@ -59,8 +58,11 @@ const LoginPage = () => {
         mouseDownPassword,
         resetForm
     } = useForm({
+        name: '',
+        nickname: '',
         login: '',
         password: '',
+        confirmPassword: '',
         showPassword: false
     })
 
@@ -73,13 +75,19 @@ const LoginPage = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
 
+        if(form.password !== form.confirmPassword){
+            return resetForm()
+        }
+
         const body = {
-            login: form.login,
+            name: form.name,
+            nickname: form.nickname,
+            email: form.email,
             password: form.password
         }
 
         axios
-            .post('https://cxngt6s9aj.execute-api.us-east-2.amazonaws.com/dev/user/login', body)
+            .post("https://cxngt6s9aj.execute-api.us-east-2.amazonaws.com/dev/user/signup", body)
             .then(response => {
                 localStorage.setItem('token', response.data.accessToken)
                 history.push("/home")
@@ -88,25 +96,41 @@ const LoginPage = () => {
                 resetForm()
             })
     }
-    return (
+
+    return(
         <div>
-            <HeroBanner>
-                
-            </HeroBanner>
+            <HeroBanner />
 
             <Content>
-                <Typography variant="h4">LOGIN</Typography>
+                <Typography variant="h4">CADASTRO</Typography>
                 <FormControl onSubmit={handleSubmit} className={classes.root}>
                     <Input
                         required
                         variant="filled"
-                        label="Email or nickname"
-                        type="email"
-                        name="login"
-                        value={form.login}
+                        label="Name"
+                        type="text"
+                        name="name"
+                        value={form.name}
                         onChange={handleInputChange}
                     />
-
+                    <Input
+                        required
+                        variant="filled"
+                        label="Nickname"
+                        type="text"
+                        name="nickname"
+                        value={form.nickname}
+                        onChange={handleInputChange}
+                    />
+                    <Input
+                        required
+                        variant="filled"
+                        label="Email"
+                        type="email"
+                        name="email"
+                        value={form.email}
+                        onChange={handleInputChange}
+                    />
                     <Input
                         required
                         variant="filled"
@@ -117,11 +141,21 @@ const LoginPage = () => {
                         onChange={handleInputChange}
                     />
 
-                    <LoginButton variant="outlined" onClick={handleSubmit}>Entrar</LoginButton>
+                    <Input
+                        required
+                        variant="filled"
+                        label="Confirm Password"
+                        type="password"
+                        name="confirmPassword"
+                        value={form.confirmPassword}
+                        onChange={handleInputChange}
+                    />
+
+                    <LoginButton variant="outlined" onClick={handleSubmit}>CADASTRAR</LoginButton>
                 </FormControl>
             </Content>
         </div>
     )
 }
 
-export default LoginPage
+export default SignUpPage
