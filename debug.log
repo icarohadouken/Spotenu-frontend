@@ -42,6 +42,7 @@
 [0816/170514.614:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0816/170514.614:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0816/170514.614:ERROR:crash_report_database_win.cc(469)] failed to stat report
+<<<<<<< HEAD
 [0817/165622.026:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0817/165622.027:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0817/165622.027:ERROR:crash_report_database_win.cc(469)] failed to stat report
@@ -53,3 +54,27 @@
 [0817/165622.028:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0817/165622.028:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0817/165622.028:ERROR:crash_report_database_win.cc(469)] failed to stat report
+=======
+[0816/235709.951:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0816/235709.966:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0816/235709.966:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0816/235709.966:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0816/235709.966:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0816/235709.966:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0816/235709.967:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0816/235709.967:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0816/235709.967:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0816/235709.967:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0816/235709.967:ERROR:crash_report_database_win.cc(469)] failed to stat report
+>>>>>>> 893a57cd34df7a84224ac81a42ec38a98b5ac36c
+[0818/160121.709:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0818/160121.734:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0818/160121.734:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0818/160121.734:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0818/160121.734:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0818/160121.734:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0818/160121.734:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0818/160121.735:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0818/160121.735:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0818/160121.735:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0818/160121.735:ERROR:crash_report_database_win.cc(469)] failed to stat report
