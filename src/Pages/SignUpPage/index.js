@@ -7,12 +7,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles} from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import HeroBanner from '../../Components/HeroBanner'
-<<<<<<< HEAD:src/Pages/UserLoginPage/index.js
-import {useStyles} from './style'
-=======
->>>>>>> 893a57cd34df7a84224ac81a42ec38a98b5ac36c:src/Pages/LoginPage/index.js
 
 const Content = styled.div`
     text-align: center;
@@ -41,8 +37,15 @@ const LoginButton = styled(Button)`
     }
 `
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
+}));
 
-const UserLoginPage = () => {
+const SignUpPage = () => {
 
     const classes = useStyles()
 
@@ -55,8 +58,11 @@ const UserLoginPage = () => {
         mouseDownPassword,
         resetForm
     } = useForm({
+        name: '',
+        nickname: '',
         login: '',
         password: '',
+        confirmPassword: '',
         showPassword: false
     })
 
@@ -69,13 +75,19 @@ const UserLoginPage = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
 
+        if(form.password !== form.confirmPassword){
+            return resetForm()
+        }
+
         const body = {
-            login: form.login,
+            name: form.name,
+            nickname: form.nickname,
+            email: form.email,
             password: form.password
         }
 
         axios
-            .post('https://spotenu-back.herokuapp.com/user/login', body)
+            .post("https://cxngt6s9aj.execute-api.us-east-2.amazonaws.com/dev/user/signup", body)
             .then(response => {
                 localStorage.setItem('token', response.data.accessToken)
                 history.push("/home")
@@ -84,30 +96,41 @@ const UserLoginPage = () => {
                 resetForm()
             })
     }
-    return (
+
+    return(
         <div>
-            <HeroBanner>
-                
-            </HeroBanner>
+            <HeroBanner />
 
             <Content>
-<<<<<<< HEAD:src/Pages/UserLoginPage/index.js
-                <Typography variant="h4">USUÁRIO LOGIN</Typography>
-                <FormControl onSubmit={handleSubmit} className={classes.margin}>
-=======
-                <Typography variant="h4">LOGIN</Typography>
+                <Typography variant="h4">CADASTRO</Typography>
                 <FormControl onSubmit={handleSubmit} className={classes.root}>
->>>>>>> 893a57cd34df7a84224ac81a42ec38a98b5ac36c:src/Pages/LoginPage/index.js
                     <Input
                         required
                         variant="filled"
-                        label="Email or nickname"
-                        type="email"
-                        name="login"
-                        value={form.login}
+                        label="Name"
+                        type="text"
+                        name="name"
+                        value={form.name}
                         onChange={handleInputChange}
                     />
-
+                    <Input
+                        required
+                        variant="filled"
+                        label="Nickname"
+                        type="text"
+                        name="nickname"
+                        value={form.nickname}
+                        onChange={handleInputChange}
+                    />
+                    <Input
+                        required
+                        variant="filled"
+                        label="Email"
+                        type="email"
+                        name="email"
+                        value={form.email}
+                        onChange={handleInputChange}
+                    />
                     <Input
                         required
                         variant="filled"
@@ -118,22 +141,21 @@ const UserLoginPage = () => {
                         onChange={handleInputChange}
                     />
 
-                    <LoginButton variant="outlined" onClick={handleSubmit}>Entrar</LoginButton>
-<<<<<<< HEAD:src/Pages/UserLoginPage/index.js
+                    <Input
+                        required
+                        variant="filled"
+                        label="Confirm Password"
+                        type="password"
+                        name="confirmPassword"
+                        value={form.confirmPassword}
+                        onChange={handleInputChange}
+                    />
 
-                    <Typography
-                        onClick={() => history.push("/user/signup")}
-                        className={classes.register}
-                    >
-                        Não possui cadastro? Clique aqui.
-                    </Typography>
-
-=======
->>>>>>> 893a57cd34df7a84224ac81a42ec38a98b5ac36c:src/Pages/LoginPage/index.js
+                    <LoginButton variant="outlined" onClick={handleSubmit}>CADASTRAR</LoginButton>
                 </FormControl>
             </Content>
         </div>
     )
 }
 
-export default UserLoginPage
+export default SignUpPage

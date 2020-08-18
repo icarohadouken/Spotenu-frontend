@@ -58,7 +58,6 @@ const LandingPage = () => {
                 <Typography variant="h3">SEJA BEM VINDO AO SPOTENU</Typography>
                 <Typography variant="subtitle1">O melhor lugar para ouvir suas músicas</Typography>
                 <div className={classes.root}>
-
                     <Button variant="contained" color="secondary" onClick={goLoginUser}>USUÁRIO</Button>
                     <LoginButton variant="outlined" onClick={goLoginBand}>BANDA</LoginButton>
                 </div>
