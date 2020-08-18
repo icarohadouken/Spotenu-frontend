@@ -9,10 +9,7 @@ import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles} from "@material-ui/core/styles"
 import HeroBanner from '../../Components/HeroBanner'
-<<<<<<< HEAD:src/Pages/UserLoginPage/index.js
 import {useStyles} from './style'
-=======
->>>>>>> 893a57cd34df7a84224ac81a42ec38a98b5ac36c:src/Pages/LoginPage/index.js
 
 const Content = styled.div`
     text-align: center;
@@ -91,13 +88,8 @@ const UserLoginPage = () => {
             </HeroBanner>
 
             <Content>
-<<<<<<< HEAD:src/Pages/UserLoginPage/index.js
                 <Typography variant="h4">USUÁRIO LOGIN</Typography>
                 <FormControl onSubmit={handleSubmit} className={classes.margin}>
-=======
-                <Typography variant="h4">LOGIN</Typography>
-                <FormControl onSubmit={handleSubmit} className={classes.root}>
->>>>>>> 893a57cd34df7a84224ac81a42ec38a98b5ac36c:src/Pages/LoginPage/index.js
                     <Input
                         required
                         variant="filled"
@@ -119,7 +111,6 @@ const UserLoginPage = () => {
                     />
 
                     <LoginButton variant="outlined" onClick={handleSubmit}>Entrar</LoginButton>
-<<<<<<< HEAD:src/Pages/UserLoginPage/index.js
 
                     <Typography
                         onClick={() => history.push("/user/signup")}
@@ -128,8 +119,6 @@ const UserLoginPage = () => {
                         Não possui cadastro? Clique aqui.
                     </Typography>
 
-=======
->>>>>>> 893a57cd34df7a84224ac81a42ec38a98b5ac36c:src/Pages/LoginPage/index.js
                 </FormControl>
             </Content>
         </div>
