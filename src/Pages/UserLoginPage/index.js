@@ -6,18 +6,10 @@ import { useForm } from '../../Hooks/Form'
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
-import musicImage from '../../images/principal.jpg'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles} from "@material-ui/core/styles"
-
-const Banner = styled.div`
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${props => props.img});
-    background-position: 0%, 0%, 50%, 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100vw;
-    height: 100vh;
-`
+import HeroBanner from '../../Components/HeroBanner'
+import {useStyles} from './style'
 
 const Content = styled.div`
     text-align: center;
@@ -46,16 +38,8 @@ const LoginButton = styled(Button)`
     }
 `
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-        },
-    },
-}));
 
-
-const LoginPage = () => {
+const UserLoginPage = () => {
 
     const classes = useStyles()
 
@@ -88,7 +72,7 @@ const LoginPage = () => {
         }
 
         axios
-            .post('https://cxngt6s9aj.execute-api.us-east-2.amazonaws.com/dev/user/login', body)
+            .post('https://spotenu-back.herokuapp.com/user/login', body)
             .then(response => {
                 localStorage.setItem('token', response.data.accessToken)
                 history.push("/home")
@@ -99,36 +83,46 @@ const LoginPage = () => {
     }
     return (
         <div>
-            <Banner img={musicImage}>
-                <Content>
-                    <Typography variant="h3">LOGIN</Typography>
-                    <FormControl onSubmit={handleSubmit} className={classes.root}>
-                        <Input
-                            required
-                            variant="filled"
-                            label="Email or nickname"
-                            type="email"
-                            name="login"
-                            value={form.login}
-                            onChange={handleInputChange}
-                        />
+            <HeroBanner>
+                
+            </HeroBanner>
 
-                        <Input
-                            required
-                            variant="filled"
-                            label="Password"
-                            type="password"
-                            name="password"
-                            value={form.password}
-                            onChange={handleInputChange}
-                        />
+            <Content>
+                <Typography variant="h4">USUÁRIO LOGIN</Typography>
+                <FormControl onSubmit={handleSubmit} className={classes.margin}>
+                    <Input
+                        required
+                        variant="filled"
+                        label="Email or nickname"
+                        type="email"
+                        name="login"
+                        value={form.login}
+                        onChange={handleInputChange}
+                    />
 
-                        <LoginButton variant="outlined" onClick={handleSubmit}>Entrar</LoginButton>
-                    </FormControl>
-                </Content>
-            </Banner>
+                    <Input
+                        required
+                        variant="filled"
+                        label="Password"
+                        type="password"
+                        name="password"
+                        value={form.password}
+                        onChange={handleInputChange}
+                    />
+
+                    <LoginButton variant="outlined" onClick={handleSubmit}>Entrar</LoginButton>
+
+                    <Typography
+                        onClick={() => history.push("/user/signup")}
+                        className={classes.register}
+                    >
+                        Não possui cadastro? Clique aqui.
+                    </Typography>
+
+                </FormControl>
+            </Content>
         </div>
     )
 }
 
-export default LoginPage
+export default UserLoginPage

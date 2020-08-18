@@ -1,7 +1,10 @@
 import React from 'react'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
-import LoginPage from '../Pages/LoginPage'
+import UserLoginPage from '../Pages/UserLoginPage'
 import LandingPage from '../Pages/LandingPage'
+import UserSignUpPage from '../Pages/UserSignUpPage'
+import BandLoginPage from '../Pages/BandLoginPage'
+import BandSignUpPage from '../Pages/BandSignUpPage'
 
 const Routes = () => {
     return(
@@ -11,11 +14,19 @@ const Routes = () => {
                     <LandingPage/>
                 </Route>
 
-                <Route exact path="/login">
-                    <LoginPage />
+                <Route exact path="/user/login">
+                    <UserLoginPage />
                 </Route>
-                <Route exact path="/signup">
+                <Route exact path="/user/signup">
+                    <UserSignUpPage />
+                </Route>
 
+                <Route exact path="/band/login">
+                    <BandLoginPage />
+                </Route>
+
+                <Route exact path="/band/signup">
+                    <BandSignUpPage />
                 </Route>
 
                 <Route exact path="/home">
