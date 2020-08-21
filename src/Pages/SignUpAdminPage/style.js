@@ -6,12 +6,4 @@ export const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1),
         },
     },
-    register: {
-        "&:hover": {
-            cursor: "pointer",
-        },
-    },
-    bgWhite: {
-        backgroundColor: '#fff'
-    }
 }));
