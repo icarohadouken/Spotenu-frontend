@@ -74,7 +74,8 @@ const UserLoginPage = () => {
         axios
             .post('https://spotenu-back.herokuapp.com/user/login', body)
             .then(response => {
-                localStorage.setItem('token', response.data.accessToken)
+                localStorage.setItem('token', response.data.token)
+                localStorage.setItem('role', response.data.role)
                 history.push("/home")
             })
             .catch(err => {
