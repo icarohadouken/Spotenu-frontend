@@ -1,7 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import CardBand from '../../../Components/CardBands'
+import AdminNav from '../../../Components/AdminNav'
 import Container from '@material-ui/core/Container'
+import { useStyles } from './style'
+import Grid from '@material-ui/core/Grid'
 
 const Admin = () => {
 
@@ -9,18 +12,20 @@ const Admin = () => {
 
     const token = localStorage.getItem('token')
 
+    const classes = useStyles()
+
     useEffect(() => {
         getBands()
     }, [])
 
     const getBands = () => {
         axios
-            .get('https://spotenu-back.herokuapp.com/band', 
-            {
-                headers: {
-                    authorization: token
-                }
-            })
+            .get('https://spotenu-back.herokuapp.com/band',
+                {
+                    headers: {
+                        authorization: token
+                    }
+                })
             .then(response => {
                 setBandsList(response.data)
             })
@@ -44,19 +49,27 @@ const Admin = () => {
                 console.log(err.message)
             })
     }
-    return(
+
+    return (
         <div>
+            <AdminNav />
             <Container>
-                {bandsList.map((band) => {
-                    return(
-                        <CardBand
-                            name={band.name}
-                            nickname={band.nickname}
-                            authorization={band.authorization}
-                            onClick={() => approveBand(band.id)} 
-                        />
-                    )
-                })}
+                <Grid container>
+
+                    {bandsList.map((band) => {
+                        return (
+                            <Grid item md={6} xs={12} className={classes.control}>
+                                <CardBand
+                                    name={band.name}
+                                    nickname={band.nickname}
+                                    authorization={band.authorization}
+                                    onClick={() => approveBand(band.id)}
+
+                                />
+                            </Grid>
+                        )
+                    })}
+                </Grid>
             </Container>
         </div>
     )

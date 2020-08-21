@@ -6,6 +6,7 @@ import UserSignUpPage from '../Pages/UserSignUpPage'
 import BandLoginPage from '../Pages/BandLoginPage'
 import BandSignUpPage from '../Pages/BandSignUpPage'
 import HomePage from '../Pages/HomePage'
+import SignUpAdminPage from '../Pages/SignUpAdminPage'
 
 const Routes = () => {
    
@@ -33,6 +34,10 @@ const Routes = () => {
 
                 <Route exact path="/home">
                     <HomePage />
+                </Route>
+
+                <Route exact path="/home/signup/admin">
+                    <SignUpAdminPage />
                 </Route>
 
 

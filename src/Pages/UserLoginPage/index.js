@@ -7,9 +7,14 @@ import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles} from "@material-ui/core/styles"
 import HeroBanner from '../../Components/HeroBanner'
 import {useStyles} from './style'
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import IconButton from '@material-ui/core/IconButton'
+import InputLabel from '@material-ui/core/InputLabel'
+import Input from '@material-ui/core/Input'
 
 const Content = styled.div`
     text-align: center;
@@ -19,12 +24,6 @@ const Content = styled.div`
     transform: translate(-50%, -50%);
     color: white;
     width: 100%;
-`
-
-const Input = styled(TextField)`
-    &&{
-        background-color: white;
-    }
 `
 
 const LoginButton = styled(Button)`
@@ -63,9 +62,19 @@ const UserLoginPage = () => {
         onChange(name, value)
     }
 
+    const pressEnter = (event) => {
+        if (event.keyCode === 13) {
+            login();
+        }
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault()
 
+        
+    }
+
+    const login = () => {
         const body = {
             login: form.login,
             password: form.password
@@ -90,28 +99,32 @@ const UserLoginPage = () => {
 
             <Content>
                 <Typography variant="h4">USUÁRIO LOGIN</Typography>
-                <FormControl onSubmit={handleSubmit} className={classes.margin}>
-                    <Input
+                <FormControl variant="fiiled" className={classes.margin}>
+                    
+                    <TextField
+                        className={classes.bgWhite}
                         required
                         variant="filled"
-                        label="Email or nickname"
+                        label="Email ou nickname"
                         type="email"
                         name="login"
                         value={form.login}
                         onChange={handleInputChange}
                     />
-
-                    <Input
-                        required
+                    <TextField
+                        className={classes.bgWhite}
                         variant="filled"
-                        label="Password"
-                        type="password"
-                        name="password"
+                        label="Senha"
+                        id="password"
+                        name='password'
+                        type={form.showPassword ? "text" : "password"}
                         value={form.password}
                         onChange={handleInputChange}
+                        onKeyUp={pressEnter}
                     />
 
-                    <LoginButton variant="outlined" onClick={handleSubmit}>Entrar</LoginButton>
+
+                    <LoginButton variant="outlined" onClick={login}>Entrar</LoginButton>
 
                     <Typography
                         onClick={() => history.push("/user/signup")}
